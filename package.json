@@ -1,0 +1,11 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "backend api for transactions",
+  "main": "index.js",
+  "scripts": {
+    
+  },
+  "author": "elstr",
+  "license": "ISC"
+}
