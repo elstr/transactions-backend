@@ -22,8 +22,11 @@ class TransactionsController {
     try {
       const { id } = req.params;
       const transaction = TransactionSchema.get(id);
-      
-      network.setSuccess(200, "Transaction found", transaction);
+      if(transaction) {
+        network.setSuccess(200, "Transaction found", transaction);
+      } else {
+        network.setError(404, "Transaction not found");
+      }
       return network.send(res);
 
     } catch (error) {

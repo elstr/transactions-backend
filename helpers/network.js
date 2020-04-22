@@ -16,6 +16,7 @@ class Network {
     setError(statusCode, message) {
       this.statusCode = statusCode;
       this.message = message;
+      this.data = []
       this.type = "error";
     }
   
