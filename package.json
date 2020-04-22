@@ -4,7 +4,8 @@
   "description": "backend api for transactions",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "test": "loadtest -n 10 -c 6 -k http://localhost:3000/transactions --data '{\"type\": \"debit\", \"amount\": \"300\"}' -T 'application/x-www-form-urlencoded' -m POST"
   },
   "dependencies": {
     "async-mutex": "^0.2.2",
@@ -14,5 +15,8 @@
     "shortid": "^2.2.15"
   },
   "author": "elstr",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "loadtest": "^5.0.3"
+  }
 }
