@@ -5,24 +5,70 @@
 4) backend will be running in `http://localhost:3001`
 
 ### Backend routes
-- GET http://localhost:3001
-This endpoint will return the current balance of the acount
+- GET http://localhost:3001  
+This endpoint will return the current balance of the account
+Response format: 
+```js
+{
+    "statusCode": 200,
+    "type": "success",
+    "data": 100,
+    "message": "Current balance"
+}
+```
 
-- GET http://localhost:3001/transactions
-This endpoint will return historical transaction data 
+- GET http://localhost:3001/transactions  
+This endpoint will return historical transaction data  
+Response format:
+```js
+{
+    "statusCode": 200,
+    "type": "success",
+    "data": [
+        {
+            "id": "5SHTR_RFT",
+            "type": "debit",
+            "amount": 500,
+            "effectiveDate": "2020-04-22 18:13:44"
+        },
+        {
+            "id": "r5USVp2mQ",
+            "type": "debit",
+            "amount": 500,
+            "effectiveDate": "2020-04-22 18:13:45"
+        }
+    ],
+    "message": "Transactions found"
+}
+```
 
-- GET http://localhost:3001/transactions/:id
-This endpoint will return specific data for the given transaction
+- GET http://localhost:3001/transactions/:id  
+This endpoint will return specific data for the given transaction  
+Response format:
+```js
+{
+    "statusCode": 200,
+    "type": "success",
+    "data": {
+        "id": "5SHTR_RFT",
+        "type": "debit",
+        "amount": 500,
+        "effectiveDate": "2020-04-22 18:13:44"
+    },
+    "message": "Transaction found"
+}
+```
 
-- POST http://localhost:3001/transactions
+
+- POST http://localhost:3001/transactions  
 Required body:
 ```js
 {
-	"amount": number / float,
-	"type": credit / debit
+	"amount": number / decimal,
+	"type": string ('credit' / 'debit')
 }
 ```
-<br />
+
 Example given:
 ```js
 {
@@ -35,7 +81,7 @@ Example given:
 	"type": "credit"
 }
 ```
-<br />
+
 Response format:
 ```js
 {
