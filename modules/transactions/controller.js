@@ -1,3 +1,4 @@
+const Mutex = require('async-mutex').Mutex;
 const { TransactionSchema } = require("./model");
 const validations = require("../../helpers/validations");
 
@@ -32,7 +33,8 @@ class TransactionsController {
   }
 
   static async apply(req, res) {
-    console.log("todo: lock")
+    const mutex = new Mutex();
+    const release = await mutex.acquire();
     try {
       const { type, amount } = req.body;
 
@@ -52,8 +54,7 @@ class TransactionsController {
       network.setError(500, error.message );
       return network.send(res);
     } finally {
-      // unlock
-      console.log("unlock")
+      release();
     }
 
   }
