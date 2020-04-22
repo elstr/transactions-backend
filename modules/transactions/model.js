@@ -1,4 +1,5 @@
 const shortid = require("shortid");
+const moment = require("moment");
 let db = require("../../db");
 
 const TransactionType = {
@@ -11,7 +12,7 @@ class TransactionSchema {
     this.id = shortid.generate();
     this.type = type;
     this.amount = amount;
-    this.effectiveDate = new Date();
+    this.effectiveDate = moment().format("YYYY-MM-DD HH:mm:ss");
   }
 
   static balance = 1000;
@@ -34,7 +35,7 @@ class TransactionSchema {
       default:
         throw new Error("Transaction type not supported");
     }
-    TransactionSchema.save(this)
+    TransactionSchema.save(this);
   };
 }
 
