@@ -8,11 +8,11 @@
     "test": "loadtest -n 10 -c 6 -k http://localhost:3000/transactions --data '{\"type\": \"debit\", \"amount\": \"300\"}' -T 'application/x-www-form-urlencoded' -m POST"
   },
   "dependencies": {
-    "async-mutex": "^0.2.2",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "moment": "^2.24.0",
     "nodemon": "^2.0.3",
+    "qrate": "^1.2.0",
     "shortid": "^2.2.15"
   },
   "author": "elstr",
