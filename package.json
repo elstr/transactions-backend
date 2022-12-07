@@ -8,8 +8,8 @@
     "test": "loadtest -n 10 -c 6 -k http://localhost:3000/transactions --data '{\"type\": \"debit\", \"amount\": \"300\"}' -T 'application/x-www-form-urlencoded' -m POST"
   },
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1",
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
     "moment": "^2.24.0",
     "nodemon": "^2.0.3",
     "qrate": "^1.2.0",
